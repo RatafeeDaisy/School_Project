@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn import linear_model as linear
 datasets_X = []
 datasets_Y = []
-fr = open('D:\\School\\Bananice\\数据集\\price.txt','r')
+fr = open('D:\\School\\Bananice\\Dataset\\price.txt','r')
 lines = fr.readlines()
 for line in lines:
     items = line.strip().split('\t')

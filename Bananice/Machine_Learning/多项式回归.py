@@ -6,7 +6,7 @@ from sklearn.preprocessing import PolynomialFeatures
 #加载训练数据，建立回归方程
 datasets_X = []
 datasets_Y = []
-fr = open('D:\\School\\Bananice\\数据集\\price.txt','r')
+fr = open('D:\\School\\Bananice\\Dataset\\price.txt','r')
 lines = fr.readlines()
 for line in lines:
     items = line.strip().split('\t')
