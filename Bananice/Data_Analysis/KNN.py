@@ -4,11 +4,15 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 
 def load_data(file_path):
     # 加载数据到DataFrame
     data = pd.read_csv(file_path)
     return data
+
 
 def handle_outliers(data):
     # 处理离群值
@@ -25,6 +29,7 @@ def handle_outliers(data):
         perc = np.shape(v_col)[0] * 100.0 / np.shape(data)[0]
         print("列 {} 的离群值 = {} => {}%".format(i, len(v_col), round(perc, 3)))
 
+
 def perform_log_transform(data):
     # 使用对数转换
     data["age"] = np.log(data.age)
@@ -32,6 +37,7 @@ def perform_log_transform(data):
     data["chol"] = np.log(data.chol)
     data["thalachh"] = np.log(data.thalachh)
     print("---已执行对数转换---")
+
 
 def preprocess_data(data):
     # 预处理数据
@@ -45,6 +51,7 @@ def preprocess_data(data):
 
     return X, y
 
+
 def train_model(X, y):
     # 拆分数据集为训练集和测试集
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -55,12 +62,33 @@ def train_model(X, y):
 
     return knn, X_test, y_test
 
+
 def evaluate_model(model, X_test, y_test):
     # 在测试集上进行预测
     y_pred = model.predict(X_test)
 
     # 输出分类报告
     print(metrics.classification_report(y_test, y_pred))
+
+    # 绘制混淆矩阵
+    plot_confusion_matrix(model, X_test, y_test)
+
+
+def plot_confusion_matrix(model, X_test, y_test):
+    # 在测试集上进行预测
+    y_pred = model.predict(X_test)
+
+    # 计算混淆矩阵
+    cm = metrics.confusion_matrix(y_test, y_pred)
+
+    # 绘制混淆矩阵热图
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+    plt.xlabel('Predicted')
+    plt.ylabel('True')
+    plt.title('Confusion Matrix')
+    plt.show()
+
 
 if __name__ == '__main__':
     # 加载数据
@@ -79,4 +107,3 @@ if __name__ == '__main__':
     # 训练和评估模型
     model, X_test, y_test = train_model(X, y)
     evaluate_model(model, X_test, y_test)
-
