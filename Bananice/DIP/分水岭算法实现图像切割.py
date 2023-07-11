@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import cv2
 
-image = cv2.imread('images/bi.jpg')
+image = cv2.imread('../Dataset/images/bi.jpg')
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 imagergb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 

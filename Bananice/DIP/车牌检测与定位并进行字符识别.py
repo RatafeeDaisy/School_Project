@@ -5,7 +5,7 @@ import pytesseract
 
 pytesseract.pytesseract.tesseract_cmd = r'E:\tesseract\tesseract.exe'
 
-img = cv2.imread('images/chepai1.jpg', cv2.IMREAD_COLOR)
+img = cv2.imread('../Dataset/images/chepai1.jpg', cv2.IMREAD_COLOR)
 img = cv2.resize(img, (600, 400))
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

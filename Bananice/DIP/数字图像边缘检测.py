@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-original_img = cv2.imread("images/road.jpg")
+original_img = cv2.imread("../Dataset/images/road.jpg")
 img = cv2.resize(original_img, None, fx=0.8, fy=0.8, interpolation=cv2.INTER_CUBIC)
 
 # 去噪

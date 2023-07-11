@@ -2,7 +2,7 @@ import cv2
 import imutils
 import numpy as np
 
-img = cv2.imread('images/chepai1.jpg', cv2.IMREAD_COLOR)
+img = cv2.imread('../Dataset/images/chepai1.jpg', cv2.IMREAD_COLOR)
 img = cv2.resize(img, (600, 400))
 cv2.imshow('Origin', img)
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

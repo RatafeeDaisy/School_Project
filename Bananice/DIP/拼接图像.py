@@ -24,8 +24,8 @@ def show_points(image):
 # 查看图像中检测到的特征点，运行下面的第一步主程序部分，显示结果如图所示，输出的特征点数：4971
 # 第一步主程序部分
 if __name__ == '__main__':
-    img_left = cv2.imread('images/IMGL.png', 1)
-    img_right = cv2.imread('images/IMGR.png', 1)
+    img_left = cv2.imread('../Dataset/images/IMGL.png', 1)
+    img_right = cv2.imread('../Dataset/images/IMGR.png', 1)
     plt.subplot(121), plt.axis('off')
     plt.imshow(cv2.cvtColor(img_left, cv2.COLOR_BGR2RGB))
     plt.subplot(122), plt.axis('off')
@@ -62,8 +62,8 @@ def match_keypoints(kps_left, kps_right, features_left, features_right, ratio, t
 
 
 if __name__ == '__main__':
-    img_left = cv2.imread('images/IMGL.png', 1)
-    img_right = cv2.imread('images/IMGR.png', 1)
+    img_left = cv2.imread('../Dataset/images/IMGL.png', 1)
+    img_right = cv2.imread('../Dataset/images/IMGR.png', 1)
     kps_left, features_left = detect(img_left)
     kps_right, features_right = detect(img_right)
     matches, H, good = match_keypoints(kps_left, kps_right, features_left, features_right, 0.5, 0.99)
@@ -88,8 +88,8 @@ def drawMatches(img_left, img_right, kps_left, kps_right, matches, H):
 
 
 if __name__ == '__main__':
-    img_left = cv2.imread('images/IMGL.png', 1)
-    img_right = cv2.imread('images/IMGR.png', 1)
+    img_left = cv2.imread('../Dataset/images/IMGL.png', 1)
+    img_right = cv2.imread('../Dataset/images/IMGR.png', 1)
     # 模块一：提取特征
     kps_left, features_left = detect(img_left)
     kps_right, features_right = detect(img_right)

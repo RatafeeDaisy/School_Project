@@ -41,7 +41,7 @@ def wiener(input, PSF, eps, K=0.01):  # 维纳滤波，K=0.01
 
 
 if __name__ == '__main__':
-    image = cv2.imread('D:/School/School_Project/Bananice/DIP/images/lena.jpg')
+    image = cv2.imread('/images/lena.jpg')
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
     # 进行运动模糊处理
