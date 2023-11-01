@@ -1,0 +1,151 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Flat Search Box Responsive Widget Template | Home :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Flat Search Box Responsive, Login form web template, Sign up Web Templates, Flat Web Templates,
+Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+</head>
+
+<body>
+<div class="search">
+    <div class="header">
+      <div class="header-left">
+        <img src="{% static 'img/rice.png' %}" class="avatar" />
+        稻稻正在和您对话
+      </div>
+       <a href="{% url 'index'%}"><div class="close">结束对话</div></a>
+    </div>
+
+    <div class="container" id="container">
+    </div>
+
+    <div class="send-area">
+      <textarea id="input" class="input-area" placeholder="请输入内容。。。"></textarea>
+
+      <button class="add" id="add">发送</button>
+    </div>
+  </div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+</body>
+
+<script>
+  let inputValue = ''
+  let input = document.getElementById('input')
+  input.addEventListener('input', function () {
+    inputValue = input.value
+  })
+
+
+  let isSend = true
+  let add = document.getElementById('add')
+  add.addEventListener('click', function () {
+    console.log('12312', inputValue)
+    if (isSend && inputValue) {
+      let xhr = new XMLHttpRequest()
+      xhr.timeout = 3000
+      let formData = new FormData()
+      formData.append('id_for_user', 1)
+      formData.append('talk_user', inputValue)
+      xhr.open('POST', 'http://127.0.0.1:8080/farmer/receive', true)
+      xhr.addEventListener("load", function () {
+        console.log(this)
+        isSend = true
+        addMessage(this.responseText, parseTime(new Date().getTime(), '{y}-{m}-{d} {h}:{i}:{s}'), 'left')
+      });
+      xhr.addEventListener("error", function () {
+        addMessage('请求失败！', parseTime(new Date().getTime(), '{y}-{m}-{d} {h}:{i}:{s}'), 'left')
+        isSend = true
+      });
+      xhr.addEventListener("timeout", function () {
+        addMessage('请求超时！', parseTime(new Date().getTime(), '{y}-{m}-{d} {h}:{i}:{s}'), 'left')
+        isSend = true
+      });
+      xhr.send(formData);
+      addMessage(inputValue, parseTime(new Date().getTime(), '{y}-{m}-{d} {h}:{i}:{s}'), 'right')
+      input.value = ''
+      inputValue = ''
+      isSend = false
+    }
+  })
+
+
+ function addMessage (message, time, type) {
+    let el = document.createElement('div')
+    el.setAttribute('class', `message message-${type}`)
+    let avatarEl = document.createElement('img')
+    avatarEl.setAttribute('class', 'avatar-m')
+    if (type === 'left') {
+      avatarEl.setAttribute('src', '{% static 'img/rice.png' %}')
+    } else {
+      avatarEl.setAttribute('src', '{% static 'img/people1.png' %}')
+    }
+    let areaEl = document.createElement('div')
+    areaEl.setAttribute('class', 'text-area')
+    let dateEl = document.createElement('div')
+    dateEl.setAttribute('class', 'date')
+    dateEl.innerText = time
+    let textEl = document.createElement('div') //创建元素
+    textEl.setAttribute('class', 'text') //添加属性
+    textEl.innerText = message
+    areaEl.appendChild(dateEl) //为元素添加子元素
+    areaEl.appendChild(textEl)
+    el.appendChild(avatarEl)
+    el.appendChild(areaEl)
+    const containerEl = document.getElementById('container')
+    containerEl.appendChild(el)
+    containerEl.scrollTop = 10000000000
+    input.value = ''
+  }
+
+
+  function parseTime (time, cFormat) {
+  if (arguments.length === 0 || !time) {
+    return null
+  }
+
+  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
+  let date
+  if (typeof time === 'object') {
+    date = time
+  } else {
+    if ((typeof time === 'string')) {
+      if ((/^[0-9]+$/.test(time))) {
+        // support "1548221490638"
+        time = parseInt(time)
+      } else {
+        // support safari
+        // https://stackoverflow.com/questions/4310953/invalid-date-in-safari
+        time = time.replace(new RegExp(/-/gm), '/')
+      }
+    }
+
+    if ((typeof time === 'number') && (time.toString().length === 10)) {
+      time = time * 1000
+    }
+    date = new Date(time)
+  }
+  const formatObj = {
+    y: date.getFullYear(),
+    m: date.getMonth() + 1,
+    d: date.getDate(),
+    h: date.getHours(),
+    i: date.getMinutes(),
+    s: date.getSeconds(),
+    a: date.getDay()
+  }
+  const timeStr = format.replace(/{([ymdhisa])+}/g, (result, key) => {
+    const value = formatObj[key]
+    // Note: getDay() returns 0 on Sunday
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
+    return value.toString().padStart(2, '0')
+  })
+  return timeStr
+}
+
+
+</script>
+</html>>

@@ -20,7 +20,8 @@ db_test = db_test.batch(batchsz, drop_remainder=True)
 
 # 统计数据集属性
 # print('x_train shape: ',x_train.shape,tf.reduce_max(y_train),tf.reduce_min(y_train))
-# print('x_test shape: ',x_test.shape)
+# print('x_test shape: ',x_test.shape
+
 
 class MyRNN(tf.keras.Model):
     # cell方式构建多层网络

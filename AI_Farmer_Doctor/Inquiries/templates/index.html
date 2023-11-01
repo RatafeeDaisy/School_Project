@@ -1,0 +1,160 @@
+{% load static %}
+
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Home</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="keywords" content="">
+
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- owl carousel css -->
+    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
+    <!-- Theme stylesheet -->
+    <link href="{% static 'css/style.default.css' %}" rel="stylesheet" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes -->
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <!-- CSS Animations -->
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+
+    <!-- Mordernizr -->
+    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+
+    <!-- Responsivity for older IE -->
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+    <meta property="og:title" content="Landing Page | Landing Page Bootstrap Theme by Bootstrapious.com!">
+    <meta property="og:site_name" content="Landing Page | Landing Page Bootstrap Theme by Bootstrapious.com!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+
+    <meta property="og:image" content="">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@bootstrapious">
+
+</head>
+
+<body data-spy="scroll" data-target="#navigation" data-offset="120">
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand scrollTo" href="#intro">水稻疾病在线问诊平台</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#intro">首页</a>
+                </li>
+                <li><a href="#section2">智能问诊</a>
+                </li>
+                <li><a href="#section3">关于我们</a>
+                </li>
+                <li><a href="{% url 'login' %}">登录</a>
+                </li>
+                <li><a href="{% url 'register' %}" style="!important">注册</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="fr"
+             style="width: 150px;
+             float: right;
+             text-align: center;
+             letter-spacing: 0.1em;
+             font-size: 12px;
+             font-weight: bold;">
+                {% if user.is_authenticated %}
+                <div class="login_btn fl">
+                    欢迎您：<em style="color: blue;">{{ user.username }}</em>
+                </div>
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+<div id="all">
+    <div id="intro" class="clearfix">
+    </div>
+
+     <div class="section  text-gray" id="section2">
+        <div class="container">
+            <div class="col-md-12">
+                <h2 class="title" data-animate="fadeInDown">诊断水稻疾病</h2>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <p class="text-large text-thin" data-animate="fadeInUp">水稻作为中国主要的粮食作物之一，每年因病虫害造成的损失多达几百万吨……</p>
+                        <p class="text-large text-thin" data-animate="fadeInUp">
+                            智能机器人“稻稻”帮助您科学地诊断水稻疾病</p>
+                        <a href="{% url 'search' %}" style="font-size: 20px;">开始问诊</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="section text-gray" id="section3" data-animate="fadeInUp">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="mb20">
+                    <h2 class="title" data-animate="fadeInUp">农医对话机器人</h2>
+                    <p class="lead text-center" data-animate="fadeInUp">科学问诊 引领农业发展</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="footer">
+        <div class="container">
+            <div style="text-align: left">
+                <img src="{% static 'img/people.png' %}">
+                <span style="color:white;">关于我们：农医对话机器人</span>
+            </div>
+            <div style="text-align: left">
+                <img src="{% static 'img/tele.png' %}">
+                <span style="color:white;">联系方式：xxxxxxxxxx</span>
+            </div>
+            <div style="text-align: left">
+                <img src="{% static 'img/location.png' %}">
+                <span style="color:white;">地址：xxxxxxxxxx</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- js base -->
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- waypoints for scroll spy -->
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<!-- owl carousel -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<!-- jQuery scroll to -->
+<script src="{% static 'js/jquery.scrollTo.min.js' %}"></script>
+<!-- main js file -->
+<script src="{% static 'js/front.js' %}"></script>
+</body>
+</html>

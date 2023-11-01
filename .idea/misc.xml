@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" project-jdk-name="D:\School\conda\cda\envs\wanwan" project-jdk-type="Python SDK" />
+  <component name="Black">
+    <option name="sdkName" value="wanwan" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="pp" project-jdk-type="Python SDK" />
 </project>
